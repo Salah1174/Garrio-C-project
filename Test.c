@@ -5,6 +5,8 @@
 int main()
 {
     char s[100];
-    strcpy(s, "Mohamed Salah Fathy");
-    IsSapce(s);
+    printf("\nEnter Name : ");
+    fgets(s,sizeof(s),stdin);
+    fflush(stdin);
+    IsAlpha(s);
 }

@@ -34,7 +34,6 @@ void IsSapce(char s[])
         }
     }
 }
-
 void IsDigit(char s[])
 {
     bool digit = false;
@@ -205,7 +204,7 @@ void print_students(struct student **head)
         printf(" \nID  %s ", current->id);
         printf(" \nGender  %c ", current->gender);
         printf(" \nAcademic Year  %d ", current->academicYear);
-        printf(" \nGPA  %.2f ", current->gpa);
+        printf(" \nGPA  %.2f \n", current->gpa);
         current = current->next;
     }
 }
@@ -230,7 +229,7 @@ void search_student(struct student **head)
         {
             if (!compare(current->Name, name))
             {
-                printf("\nName is %s", current->Name);
+                printf("\nID is %s", current->id);
                 printf("\ngpa is %.2f", current->gpa);
                 printf("\ngender is %c", current->gender);
                 printf("\nYear is %d", current->academicYear);
