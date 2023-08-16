@@ -1,17 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "Functions.h"
 int main()
 {
-    int d;
-    char s1[1000];
-    scanf("%[^\n]", s1);
-    char *token = strtok(s1, " ");
-    while (token != NULL)
-    {
-        printf("%s\n", token);
-        token = strtok(NULL, " ");
-    }
-    return 0;
+    char s[100];
+    strcpy(s, "Mohamed Salah Fathy");
+    IsSapce(s);
 }

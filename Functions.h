@@ -4,14 +4,39 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <ctype.h>
-int IsZero(char s[])
+void IsSapce(char s[])
 {
-    int d;
-    d ;
+    int count = 0;
+    bool space = false;
+    while (!space)
+    {
+
+        for (int i = 1; i < strlen(s); i++)
+        {
+            if (isspace(s[0]))
+            {
+                count++;
+            }
+            if (isspace(s[i - 1]))
+            {
+                count++;
+            }
+        }
+        if (count == 1)
+        {
+            space = true;
+        }
+        else
+        {
+            count = 0;
+            printf("\nEnter First and Last name only :");
+            gets(s);
+        }
+    }
 }
+
 void IsDigit(char s[])
 {
-
     bool digit = false;
     bool found = false;
     while (!digit)
@@ -64,6 +89,7 @@ void add_student(struct student **head)
     printf("Enter first name : ");
     fgets(newnode->Name, sizeof(newnode->Name), stdin);
     fflush(stdin);
+    IsSapce(newnode->Name);
 
     printf("\nEnter ID : ");
     fgets(newnode->id, sizeof(newnode->id), stdin);
@@ -199,6 +225,7 @@ void search_student(struct student **head)
     case 1:
         printf("\nEnter Name : ");
         fgets(name, sizeof(name), stdin);
+        IsSapce(name);
         while (current != NULL)
         {
             if (!compare(current->Name, name))
