@@ -1,3 +1,5 @@
+/*This project is dynamically allocated using linked lists*/
+
 #include "Functions.h"
 
 int main()
@@ -17,21 +19,18 @@ int main()
     s1->academicYear = 2023;
     strcpy(s1->Name, "Mohamed Salah");
     strcpy(s1->id, "123\0");
-    // s1->id = 123;
     s1->gender = 'M';
 
     s2->gpa = 6.0;
     s2->academicYear = 2023;
     strcpy(s2->Name, "Ahmed Mohamed");
     strcpy(s2->id, "321\0");
-    // s2->id = 321;
     s2->gender = 'M';
 
     s3->gpa = 3.0;
     s3->academicYear = 2023;
     strcpy(s3->Name, "Ahmed Mohsen");
     strcpy(s3->id, "456\0");
-    // s2->id = 321;
     s3->gender = 'M';
 
     s1->next = s2;

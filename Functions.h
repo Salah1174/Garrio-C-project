@@ -4,11 +4,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <ctype.h>
-void IsSapce(char s[])
+void IsSapce(char s[]) // Function to check Name string contains only First and Last names
 {
     int count = 0;
     bool space = false;
-    while (!space)
+    while (!space) // Loop until  Given name is two names only
     {
 
         for (int i = 1; i < strlen(s); i++)
@@ -34,11 +34,11 @@ void IsSapce(char s[])
         }
     }
 }
-void IsDigit(char s[])
+void IsDigit(char s[]) // Function to check ID string contains digits only
 {
     bool digit = false;
     bool found = false;
-    while (!digit)
+    while (!digit) // Loop until  Given ID is digits 
     {
         for (int i = 1; i < strlen(s); i++)
         {
@@ -62,7 +62,7 @@ void IsDigit(char s[])
         }
     }
 }
-int compare(char s1[], char s2[])
+int compare(char s1[], char s2[]) // Compare two Strings
 {
     int flag = 0, i = 0;
     while ((s1[i] != '\0' && s2[i] != '\0'))
@@ -79,7 +79,7 @@ int compare(char s1[], char s2[])
     else
         return 1;
 }
-void add_student(struct student **head)
+void add_student(struct student **head) // Add student
 {
     struct student *newnode = (struct student *)malloc(sizeof(struct student));
     struct student *temp = *head;
@@ -94,25 +94,24 @@ void add_student(struct student **head)
     fgets(newnode->id, sizeof(newnode->id), stdin);
     IsDigit(newnode->id);
     bool added = false;
-    while (!added)
+    while (!added) // Loop until  Given ID is new
     {
         bool found = false;
         temp = *head;
-        while (temp != NULL)
+        while (temp != NULL) // Looping on linked list
         {
-            if (!compare(newnode->id, temp->id))
+            if (!compare(newnode->id, temp->id)) // Check if ID is already assigned to a Student
             {
                 printf("\nID already exists");
                 found = true;
             }
-            temp = temp->next;
+            temp = temp->next; // Moving to next item in linked list
         }
 
         if (found)
         {
             printf("\nEnter ID : ");
             fgets(newnode->id, sizeof(newnode->id), stdin);
-            // scanf("%d", &newnode->id);
         }
         else
         {
@@ -126,7 +125,7 @@ void add_student(struct student **head)
     bool charBool = false;
     while (!charBool)
     {
-        if (newnode->gender == 'M' || newnode->gender == 'F' || newnode->gender == 'm' || newnode->gender == 'f')
+        if (newnode->gender == 'M' || newnode->gender == 'F' || newnode->gender == 'm' || newnode->gender == 'f') // Check Gender Input
         {
             charBool = true;
         }
@@ -142,7 +141,7 @@ void add_student(struct student **head)
     bool year = false;
     while (!year)
     {
-        if (newnode->academicYear >= 1 && newnode->academicYear <= 2024)
+        if (newnode->academicYear >= 1 && newnode->academicYear <= 2024) // Check Year
         {
             year = true;
         }
@@ -158,7 +157,7 @@ void add_student(struct student **head)
     bool gpaBool = false;
     while (!gpaBool)
     {
-        if (newnode->gpa >= 0.0 && newnode->gpa <= 4.0)
+        if (newnode->gpa >= 0.0 && newnode->gpa <= 4.0) // Check GPA
         {
             gpaBool = true;
         }
@@ -170,34 +169,14 @@ void add_student(struct student **head)
     }
 
     newnode->next = (*head);
-    (*head) = newnode;
+    (*head) = newnode; // Student is added at the beginning of linked list
 }
-void print_students(struct student **head)
+void print_students(struct student **head) // Print all students' data
 {
-    struct student *current = *head;
-    struct student *temp = NULL;
-    struct student *index = NULL;
-    if (head == NULL)
+    struct student *current = *head; // Assign to head of linked list
+    if (head == NULL)                // Linked list is empty
         return;
-    // if (head != NULL)
-    // {
-    //     while (current != NULL)
-    //     {
-    //         index = current->next;
-    //         while (index != NULL)
-    //         {
-    //             if (current->gpa > index->gpa)
-    //             {
-    //                 current->next = index->next;
-    //                 index->next = current->next;
-    //             }
-    //             index = index->next;
-    //         }
-    //         current = current->next;
-    //     }
-    // }
-    current = *head;
-    while (current != NULL)
+    while (current != NULL) // Looping on linked list
     {
         printf(" \nFirst name  %s ", current->Name);
         printf(" \nID  %s ", current->id);
@@ -207,7 +186,7 @@ void print_students(struct student **head)
         current = current->next;
     }
 }
-void search_student(struct student **head)
+void search_student(struct student **head) // Search for student
 {
     char id[8];
     char name[100];
@@ -267,16 +246,16 @@ void search_student(struct student **head)
         break;
     }
 }
-void delete_student(struct student **head)
+void delete_student(struct student **head) // Delete student from linked list
 {
     char id[8];
     struct student *temp = *head;
     struct student *prev = NULL;
-    // Check if the element to be deleted is first element
     printf("\nEnter ID : ");
     fgets(id, sizeof(id), stdin);
     IsDigit(id);
     fflush(stdin);
+    // Check if the element to be deleted is first element
     if (temp != NULL && !compare(temp->id, id))
     {
         *head = temp->next;
@@ -295,7 +274,7 @@ void delete_student(struct student **head)
     prev->next = temp->next;
     free(temp);
 }
-void update_student(struct student **head)
+void update_student(struct student **head) // Edit student's data
 {
     char id[8];
     int choice;
