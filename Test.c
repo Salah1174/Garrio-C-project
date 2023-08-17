@@ -6,7 +6,7 @@ int main()
 {
     char s[100];
     printf("\nEnter Name : ");
-    fgets(s,sizeof(s),stdin);
+    fgets(s, sizeof(s), stdin);
     fflush(stdin);
     IsAlpha(s);
 }

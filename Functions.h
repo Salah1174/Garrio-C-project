@@ -177,8 +177,8 @@ void print_students(struct student **head)
     struct student *current = *head;
     struct student *temp = NULL;
     struct student *index = NULL;
-    // if (head == NULL)
-    //     return;
+    if (head == NULL)
+        return;
     // if (head != NULL)
     // {
     //     while (current != NULL)
@@ -188,16 +188,15 @@ void print_students(struct student **head)
     //         {
     //             if (current->gpa > index->gpa)
     //             {
-    //                 temp->next = current->next;
     //                 current->next = index->next;
-    //                 index->next = temp->next;
+    //                 index->next = current->next;
     //             }
     //             index = index->next;
     //         }
     //         current = current->next;
     //     }
     // }
-    // current = *head;
+    current = *head;
     while (current != NULL)
     {
         printf(" \nFirst name  %s ", current->Name);
