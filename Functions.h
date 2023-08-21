@@ -38,7 +38,7 @@ void IsDigit(char s[]) // Function to check ID string contains digits only
 {
     bool digit = false;
     bool found = false;
-    while (!digit) // Loop until  Given ID is digits 
+    while (!digit) // Loop until  Given ID is digits
     {
         for (int i = 1; i < strlen(s); i++)
         {
@@ -171,11 +171,72 @@ void add_student(struct student **head) // Add student
     newnode->next = (*head);
     (*head) = newnode; // Student is added at the beginning of linked list
 }
-void print_students(struct student **head) // Print all students' data
+void print_students_sorted(struct student **head) // Print all students' data
 {
-    struct student *current = *head; // Assign to head of linked list
-    if (head == NULL)                // Linked list is empty
-        return;
+    struct student *current = *head, *index = NULL; // Assign to head of linked list
+    char tempName[100];
+    char tempid[8];
+    char tempgender;
+    int tempacademicYear;
+    float tempgpa;
+    if (head == NULL)
+    {
+        return; // Linked list is empty
+    }
+    else
+    {
+        while (current != NULL)
+        {
+            index = current->next;
+            while (index != NULL)
+            {
+                if (current->gpa < index->gpa)
+                {
+                    tempgpa = current->gpa; // GPA swap
+                    current->gpa = index->gpa;
+                    index->gpa = tempgpa;
+
+                    tempacademicYear = current->academicYear; // Academic year swap
+                    current->academicYear = index->academicYear;
+                    index->academicYear = tempacademicYear;
+
+                    tempgender = current->gender; // Gender swap
+                    current->gender = index->gender;
+                    index->gender = tempgender;
+
+                    // tempName = current->Name;
+                    strcpy(tempName, current->Name); // Name swap
+                    // current->Name = index->Name;
+                    strcpy(current->Name, index->Name);
+                    // index->Name = tempName;
+                    strcpy(index->Name, tempName);
+
+                    // tempid = current->id;
+                    strcpy(tempid, current->id); // ID swap
+                    // current->id = index->id;
+                    strcpy(current->id, index->id);
+                    // index->id = tempid;
+                    strcpy(index->id, tempid);
+                }
+                index = index->next;
+            }
+            current = current->next;
+        }
+    }
+    current = *head;
+    for (int i = 0; i < 3; i++)
+    {
+        printf(" \nFirst name  %s ", current->Name);
+        printf(" \nID  %s ", current->id);
+        printf(" \nGender  %c ", current->gender);
+        printf(" \nAcademic Year  %d ", current->academicYear);
+        printf(" \nGPA  %.2f \n", current->gpa);
+        current = current->next;
+    }
+}
+void print_students_all(struct student **head)
+{
+    struct student *current = *head;
     while (current != NULL) // Looping on linked list
     {
         printf(" \nFirst name  %s ", current->Name);
