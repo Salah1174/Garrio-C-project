@@ -224,29 +224,46 @@ void print_students_sorted(struct student **head) // Print all students' data
         }
     }
     current = *head;
-    for (int i = 0; i < 3; i++)
+    while (current != NULL)
     {
-        printf(" \nFirst name  %s ", current->Name);
-        printf(" \nID  %s ", current->id);
-        printf(" \nGender  %c ", current->gender);
-        printf(" \nAcademic Year  %d ", current->academicYear);
-        printf(" \nGPA  %.2f \n", current->gpa);
-        current = current->next;
+        for (int i = 0; i < 3; i++)
+        {
+            printf("\nStudent in %d place: ", i + 1);
+            printf(" \nFirst name  %s ", current->Name);
+            printf(" \nID  %s ", current->id);
+            printf(" \nGender  %c ", current->gender);
+            printf(" \nAcademic Year  %d ", current->academicYear);
+            printf(" \nGPA  %.2f \n", current->gpa);
+            current = current->next;
+        }
+        if (current->Name != NULL)
+        {
+            printf(" \nFirst name  %s ", current->Name);
+            printf(" \nID  %s ", current->id);
+            printf(" \nGender  %c ", current->gender);
+            printf(" \nAcademic Year  %d ", current->academicYear);
+            printf(" \nGPA  %.2f \n", current->gpa);
+            current = current->next;
+        }
+        else
+        {
+            break;
+        }
     }
 }
-void print_students_all(struct student **head)
-{
-    struct student *current = *head;
-    while (current != NULL) // Looping on linked list
-    {
-        printf(" \nFirst name  %s ", current->Name);
-        printf(" \nID  %s ", current->id);
-        printf(" \nGender  %c ", current->gender);
-        printf(" \nAcademic Year  %d ", current->academicYear);
-        printf(" \nGPA  %.2f \n", current->gpa);
-        current = current->next;
-    }
-}
+// void print_students_all(struct student **head)
+// {
+//     struct student *current = *head;
+//     while (current != NULL) // Looping on linked list
+//     {
+//         printf(" \nFirst name  %s ", current->Name);
+//         printf(" \nID  %s ", current->id);
+//         printf(" \nGender  %c ", current->gender);
+//         printf(" \nAcademic Year  %d ", current->academicYear);
+//         printf(" \nGPA  %.2f \n", current->gpa);
+//         current = current->next;
+//     }
+// }
 void search_student(struct student **head) // Search for student
 {
     char id[8];

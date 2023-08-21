@@ -42,7 +42,7 @@ int main()
     while (!finish)
     {
         // _sleep(4000);
-        printf("\n/***************************************************************************************/\n\n                                     Student Mangement System                                     \n/***************************************************************************************/\n\n\nChoose the desired operation: \n\n1- Add a new student\n2- Remove a student\n3- Retrieve student's data\n4- Update student's data\n5-Print Students Sorted\n6-Print All Students\n7-Exit Program\n");
+        printf("\n/***************************************************************************************/\n\n                                     Student Mangement System                                     \n/***************************************************************************************/\n\n\nChoose the desired operation: \n\n1- Add a new student\n2- Remove a student\n3- Retrieve student's data\n4- Update student's data\n5-Print Students\n6-Exit Program\n");
         printf("\nChoice : ");
         scanf("%d", &choice);
         fflush(stdin);
@@ -65,14 +65,9 @@ int main()
             print_students_sorted(&head);
             break;
         case 6:
-            system("cls");
-            print_students_all(&head);
-            break;
-        case 7:
             finish = true;
             break;
         default:
-            printf("\n\nChoose the desired operation: \n\n1- Add a new student\n2- Remove a student\n3- Retrieve student's data\n4- Update student's data\n");
             break;
         }
     }
