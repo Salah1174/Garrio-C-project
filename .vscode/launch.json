@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "e:/Garraio/Training Project",
-      "program": "e:/Garraio/Training Project/build/Debug/outDebug",
+      "cwd": "e:/Garraio/Garrio GitHub",
+      "program": "e:/Garraio/Garrio GitHub/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
